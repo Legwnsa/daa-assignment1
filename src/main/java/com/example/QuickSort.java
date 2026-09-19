@@ -14,9 +14,16 @@ public class QuickSort {
         sort(a, 0, a.length - 1, metrics, 1);
     }
 
-    private static void sort(int[] a, int left, int right, Metrics metrics, int depth) {
+    private static void sort(
+            int[] a,
+            int left,
+            int right,
+            Metrics metrics,
+            int depth) {
+
         while (left < right) {
             metrics.updateDepth(depth);
+
             int pivotIndex = left + RANDOM.nextInt(right - left + 1);
             int pivot = a[pivotIndex];
 
@@ -28,45 +35,52 @@ public class QuickSort {
             int leftSize = less - left;
             int rightSize = right - greater;
 
-            if (leftSize < rightSize) {
-                if (left < less -1) {
+            if (leftSize <= rightSize) {
+                if (left < less - 1) {
                     sort(a, left, less - 1, metrics, depth + 1);
                 }
 
-                left = greater +1;
+                left = greater + 1;
             } else {
-                if (left < less -1) {
-                    sort(a, left, less -1, metrics, depth + 1);
+                if (greater + 1 < right) {
+                    sort(a, greater + 1, right, metrics, depth + 1);
                 }
 
-                right = less -1;
+                right = less - 1;
             }
         }
     }
 
-    static int[] partition(int[] a, int l, int r, int p, Metrics metrics) {
-        int lt = l;
-        int i = l;
-        int gt = r;
+    static int[] partition(
+            int[] a,
+            int left,
+            int right,
+            int pivot,
+            Metrics metrics) {
 
-        while (i<= gt) {
+        int lt = left;
+        int i = left;
+        int gt = right;
+
+        while (i <= gt) {
             metrics.compare();
 
-            if (a[i] < p) {
+            if (a[i] < pivot) {
                 swap(a, lt, i);
                 lt++;
                 i++;
+            } else if (a[i] > pivot) {
+                metrics.compare();
+
+                swap(a, i, gt);
+                gt--;
             } else {
                 metrics.compare();
 
-                if (a[i] > p) {
-                    swap(a, i, gt);
-                    gt--;
-                } else {
-                    i++;
-                }
+                i++;
             }
         }
+
         return new int[]{lt, gt};
     }
 
@@ -76,5 +90,3 @@ public class QuickSort {
         a[j] = temp;
     }
 }
-
-
