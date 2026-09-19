@@ -1,4 +1,4 @@
-DAA Assignment 1 - Divide and Conquer
+DAA Assignment 1 - Divide and Conquer & Asymptotic Notations
 
 Algorithms
 
@@ -9,32 +9,37 @@ This project implements:
 - QuickSelect
 - InsertionSort cutoff for MergeSort
 
-Requirements:
+Requirements
 
 - Java 17+
 - Maven
 - JUnit 5
 
-Run Tests:
+Run Tests
 
-`mvn test`
+mvn test
 
+Run Benchmark
 
-Run BenchmarkL:
-
-Run the `Benchmark` class from IntelliJ.
+Run the Benchmark class.
 
 The benchmark tests:
 
 - Random input
 - Sorted input
-- Duplicate values
-- n = 1,000, 10,000, 100,000, 1,000,000
+- Duplicate values (0..9)
+- n = 1,000
+- n = 10,000
+- n = 100,000
+- n = 1,000,000
+- 5 runs per case
+- Median values are recorded
 
-Results are saved to `benchmark.csv`.
+Results are saved to:
 
-Project Structure:
+results.csv
 
+Project Structure
 
 src/
     main/java/com/example/
@@ -46,15 +51,42 @@ src/
     test/java/com/example/
         AlgorithmsTest.java
 
+plots/
+    time_vs_n.png
+    depth_vs_n.png
+    ratio_vs_n.png
+
+Tests
+
+JUnit 5 tests include:
+
+- 100 random arrays for MergeSort
+- 100 random arrays for QuickSort
+- 100 random arrays for QuickSelect
+- Empty arrays
+- One-element arrays
+- All-equal arrays
+- Already sorted arrays
+- Invalid QuickSelect indices
+- QuickSort recursion depth test for n = 100,000
 
 Git
 
-Main branches:
+Main branch:
 
-- master
+- main
+
+Feature branches:
+
 - feature/mergesort
 - feature/quicksort
 - feature/select
 - feature/metrics
 
-Version: v1.0
+Version tag:
+
+- v1.0
+
+GitHub
+
+https://github.com/Legwnsa/daa-assignment1

@@ -20,7 +20,7 @@ public class Benchmark {
 
     public static void main(String[] args) throws IOException {
 
-        try (FileWriter writer = new FileWriter("benchmark.csv")) {
+        try (FileWriter writer = new FileWriter("results.csv")) {
 
             writer.write(
                     "algorithm,input,n,time_ms,comparisons,max_depth\n"
@@ -43,7 +43,7 @@ public class Benchmark {
         }
 
         System.out.println("Benchmark finished.");
-        System.out.println("CSV file: benchmark.csv");
+        System.out.println("CSV file: results.csv");
     }
 
     private static void runMergeSort(
