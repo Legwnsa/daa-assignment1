@@ -44,7 +44,7 @@ public class QuickSort {
         }
     }
 
-    private static int[] partition(int[] a, int l, int r, int p, Metrics metrics) {
+    static int[] partition(int[] a, int l, int r, int p, Metrics metrics) {
         int lt = l;
         int i = l;
         int gt = r;
